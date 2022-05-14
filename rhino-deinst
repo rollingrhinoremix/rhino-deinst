@@ -56,7 +56,7 @@ for i in "${SELECTED[@]}"; do
       ;;
     9)
       desktop+=("lxqt")
-      login_manager="lightdm"
+      login_manager="sddm"
       ;;
     10)
       desktop+=("budgie-desktop")
