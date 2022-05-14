@@ -19,7 +19,7 @@ for i in "${SELECTED[@]}"; do
       login_manager="gdm3"
       ;;
     2)
-      desktop+=("gnome-desktop")
+      desktop+=("vanilla-gnome-desktop")
       login_manager="gdm3"
       ;;
     3)
