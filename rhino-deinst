@@ -1,12 +1,12 @@
 #!/bin/bash
 set -e
 
-if ! command -v dialog >/dev/null; then
-	echo "dialog is not installed, installing..."
+if ! command -v dialog > /dev/null; then
+  echo "dialog is not installed, installing..."
   sudo apt-get install dialog -y
 fi
 
-SELECTED=( $(dialog --separate-output --checklist "Select Desktop Environment(s)" 10 35 5 \
+SELECTED=($( dialog --separate-output --checklist "Select Desktop Environment(s)" 10 35 5 \
   "1" "GNOME (Ubuntu)" ON \
   "2" "GNOME" OFF \
   "3" "KDE (Full)" OFF \
@@ -18,7 +18,7 @@ SELECTED=( $(dialog --separate-output --checklist "Select Desktop Environment(s)
   "9" "LXQT" OFF \
   "10" "Budgie" OFF \
   "11" "i3" OFF \
-    3>&1 1>&2 2>&3) )
+  3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
   case $i in
