@@ -2,15 +2,23 @@
 set -e
 
 if ! command -v dialog >/dev/null; then
-	echo "dialog is not installed"
-	exit 1
+	echo "dialog is not installed, installing..."
+  sudo apt-get install dialog -y
 fi
 
-SELECTED=( $(dialog --separate-output --checklist "Choose options" 10 35 5 \
-  "1" "Ubuntu Desktop (GNOME)" ON \
+SELECTED=( $(dialog --separate-output --checklist "Select Desktop Environment(s)" 10 35 5 \
+  "1" "GNOME (Ubuntu)" ON \
   "2" "GNOME" OFF \
-  "3" "KDE" OFF \
-  "4" "XFCE" OFF 3>&1 1>&2 2>&3) )
+  "3" "KDE (Full)" OFF \
+  "4" "KDE (Standard)" OFF \
+  "5" "XFCE" OFF \
+  "6" "MATE" OFF \
+  "7" "MATE (Ubuntu)" OFF \
+  "8" "Cinnamon" OFF \
+  "9" "LXQT" OFF \
+  "10" "Budgie" OFF \
+  "11" "i3" OFF \
+    3>&1 1>&2 2>&3) )
 
 for i in "${SELECTED[@]}"; do
   case $i in
@@ -27,7 +35,35 @@ for i in "${SELECTED[@]}"; do
       login_manager="sddm"
       ;;
     4)
+      desktop+=("kde-standard")
+      login_manager="sddm"
+      ;;
+    5)
       desktop+=("xfce4" "xfce4-goodies")
+      login_manager="lightdm"
+      ;;
+    6)
+      desktop+=("mate-desktop")
+      login_manager="lightdm"
+      ;;
+    7)
+      desktop+=("ubuntu-mate-desktop")
+      login_manager="lightdm"
+      ;;
+    8)
+      desktop+=("cinnamon")
+      login_manager="lightdm"
+      ;;
+    9)
+      desktop+=("lxqt")
+      login_manager="lightdm"
+      ;;
+    10)
+      desktop+=("budgie-desktop")
+      login_manager="gdm3"
+      ;;
+    11)
+      desktop+=("i3")
       login_manager="lightdm"
       ;;
   esac
