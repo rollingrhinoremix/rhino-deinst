@@ -1,0 +1,62 @@
+#!/bin/bash
+set -e
+
+if ! command -v dialog >/dev/null; then
+	echo "dialog is not installed"
+	exit 1
+fi
+
+SELECTED=( $(dialog --separate-output --checklist "Choose options" 10 35 5 \
+  "1" "Ubuntu Desktop (GNOME)" ON \
+  "2" "GNOME" OFF \
+  "3" "KDE" OFF \
+  "4" "XFCE" OFF 3>&1 1>&2 2>&3) )
+
+for i in "${SELECTED[@]}"; do
+  case $i in
+    1)
+      desktop+=("ubuntu-desktop")
+      login_manager="gdm3"
+      ;;
+    2)
+      desktop+=("gnome-desktop")
+      login_manager="gdm3"
+      ;;
+    3)
+      desktop+=("kde-full")
+      login_manager="sddm"
+      ;;
+    4)
+      desktop+=("xfce4" "xfce4-goodies")
+      login_manager="lightdm"
+      ;;
+  esac
+done
+
+clear
+
+echo "Updating package cache..."
+sudo apt-get update
+
+echo "Checking for package existence..."
+for i in "${desktop[@]}"; do
+  if [[ $(apt-cache search --names-only "^$i\$") ]]; then
+    echo "$i exists..."
+  else
+    echo "$i does not exist, exiting..."
+    exit 1
+  fi
+done
+
+if [[ $(apt-cache search --names-only "^$login_manager\$") ]]; then
+  echo "$i exists..."
+else
+  echo "$i does not exist, exiting..."
+  exit 1
+fi
+
+echo "Installing desktop and login manager..."
+sudo apt-get install -y ${desktop[@]} "$login_manager"
+echo "Setting $login_manager to startup on boot..."
+sudo systemctl enable "$login_manager"
+echo "Done!"
