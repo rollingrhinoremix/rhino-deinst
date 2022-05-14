@@ -58,5 +58,6 @@ fi
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "$login_manager"
 echo "Setting $login_manager to startup on boot..."
+sudo systemctl set-default graphical.target
 sudo systemctl enable "$login_manager"
 echo "Done!"
