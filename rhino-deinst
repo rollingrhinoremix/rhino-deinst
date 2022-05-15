@@ -24,6 +24,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "15" "bspwm" OFF \
   "16" "DWM" OFF \
   "17" "Openbox" OFF \
+  "18" "UKUI" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -97,6 +98,10 @@ for i in "${SELECTED[@]}"; do
       desktop+=("openbox")
       login_manager="lightdm"
       extra_packages="obconf"
+      ;;
+    18)
+      desktop+=("ukui-desktop-environment")
+      login_manager="ukui-greeter"
       ;; 
   esac
 done
