@@ -2,7 +2,7 @@
 set -e
 
 if ! command -v dialog > /dev/null; then
-  echo "dialog is not installed, installing..."
+  echo "dialog is not installed, installing..." >&2
   sudo apt-get install dialog -y
 fi
 
@@ -85,7 +85,7 @@ for i in "${desktop[@]}"; do
   if [[ $(apt-cache search --names-only "^$i\$") ]]; then
     echo "$i exists..."
   else
-    echo "$i does not exist, exiting..."
+    echo "$i does not exist, exiting..." >&2
     exit 1
   fi
 done
@@ -93,12 +93,12 @@ done
 if [[ $(apt-cache search --names-only "^$login_manager\$") ]]; then
   echo "$i exists..."
 else
-  echo "$i does not exist, exiting..."
+  echo "$i does not exist, exiting..." >&2
   exit 1
 fi
 
 echo "Installing desktop and login manager..."
-echo sudo apt-get install -y ${desktop[@]} "$login_manager" $extra_packages
+echo sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
