@@ -21,7 +21,9 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "12" "Unity (Ubuntu)" OFF \
   "13" "Sway" OFF \
   "14" "AwesomeWM" OFF \
-  "15" "Cinnamon" OFF \
+  "15" "bspwm" OFF \
+  "16" "DWM" OFF \
+  "17" "Cinnamon" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -84,6 +86,14 @@ for i in "${SELECTED[@]}"; do
       login_manager="lightdm"
       ;;
     15)
+      desktop+=("bspwm")
+      login_manager="lightdm"
+      ;; 
+    16)
+      desktop+=("dwm")
+      login_manager="lightdm"
+      ;;
+    17)
       desktop+=("cinnamon")
       login_manager="lightdm"
       ;;
