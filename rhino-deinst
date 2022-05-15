@@ -67,7 +67,7 @@ for i in "${SELECTED[@]}"; do
       ;;
     10)
       desktop+=("budgie-desktop")
-      login_manager="gdm3"
+      login_manager="budgie-lightdm-theme-base"
       ;;
     11)
       desktop+=("i3")
