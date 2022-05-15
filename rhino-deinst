@@ -18,7 +18,7 @@ SELECTED=($( dialog --separate-output --checklist "Select Desktop Environment(s)
   "9" "LXQT" OFF \
   "10" "Budgie" OFF \
   "11" "i3" OFF \
-  "12" "Unity" OFF \
+ "12" "Unity" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
