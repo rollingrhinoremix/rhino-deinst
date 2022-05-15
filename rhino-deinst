@@ -26,6 +26,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "17" "Openbox" OFF \
   "18" "UKUI" OFF \
   "19" "Phosh core" OFF \
+  "20" "Cutefish" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -107,7 +108,10 @@ for i in "${SELECTED[@]}"; do
     19)
       desktop+=("phosh-core")
       login_manager="gdm3"
-      ;; 
+      ;;
+    20)
+      desktop+=("cutefish-core")
+      login_manager="sddm"
   esac
 done
 
