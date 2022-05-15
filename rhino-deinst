@@ -18,7 +18,7 @@ SELECTED=($( dialog --separate-output --checklist "Select Desktop Environment(s)
   "9" "LXQT" OFF \
   "10" "Budgie" OFF \
   "11" "i3" OFF \
- "12" "Unity (Ubuntu)" OFF \
+  "12" "Unity (Ubuntu)" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -70,6 +70,7 @@ for i in "${SELECTED[@]}"; do
     12)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
+      extra_packages="dbus-x11 yaru-theme-unity"
       ;;
   esac
 done
@@ -97,7 +98,7 @@ else
 fi
 
 echo "Installing desktop and login manager..."
-sudo apt-get install -y ${desktop[@]} "$login_manager"
+echo sudo apt-get install -y ${desktop[@]} "$login_manager" $extra_packages
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
