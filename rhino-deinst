@@ -27,6 +27,9 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "18" "UKUI" OFF \
   "19" "Phosh core" OFF \
   "20" "Cutefish" OFF \
+  "21" "LXDE (Ubuntu)" OFF \
+  "22" "LXDE" OFF \
+  "23" "XFCE (Ubuntu)" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -112,6 +115,19 @@ for i in "${SELECTED[@]}"; do
     20)
       desktop+=("cutefish-core")
       login_manager="sddm"
+      ;; 
+    21)
+      desktop+=("lubuntu-desktop")
+      login_manager="lxdm"
+      ;; 
+    22)
+      desktop+=("lxde")
+      login_manager="lxdm"
+      ;;
+    23)
+      desktop+=("xubuntu-desktop")
+      login_manager="lightdm"
+      ;; 
   esac
 done
 
