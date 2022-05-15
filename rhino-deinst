@@ -19,6 +19,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "10" "Budgie" OFF \
   "11" "i3" OFF \
   "12" "Unity (Ubuntu)" OFF \
+  "13" "Sway" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -70,8 +71,12 @@ for i in "${SELECTED[@]}"; do
     12)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity"
+      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool"
       ;;
+    13)
+      desktop+=("sway")
+      login_manager="sddm"
+      ;; 
   esac
 done
 
