@@ -23,6 +23,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "14" "AwesomeWM" OFF \
   "15" "bspwm" OFF \
   "16" "DWM" OFF \
+  "17" "Openbox" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -83,7 +84,7 @@ for i in "${SELECTED[@]}"; do
     14)
       desktop+=("awesome")
       login_manager="lightdm"
-      ;; 
+      ;;
     15)
       desktop+=("bspwm")
       login_manager="lightdm"
@@ -91,6 +92,11 @@ for i in "${SELECTED[@]}"; do
     16)
       desktop+=("dwm")
       login_manager="lightdm"
+      ;;
+    17)
+      desktop+=("openbox")
+      login_manager="lightdm"
+      extra_packages="obconf"
       ;; 
   esac
 done
