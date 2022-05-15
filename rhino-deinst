@@ -25,6 +25,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "16" "DWM" OFF \
   "17" "Openbox" OFF \
   "18" "UKUI" OFF \
+  "19" "Phosh core" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -102,6 +103,10 @@ for i in "${SELECTED[@]}"; do
     18)
       desktop+=("ukui-desktop-environment")
       login_manager="ukui-greeter"
+      ;;
+    19)
+      desktop+=("phosh-core")
+      login_manager="gdm3"
       ;; 
   esac
 done
