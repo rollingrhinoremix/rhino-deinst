@@ -21,7 +21,6 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "12" "Unity (Ubuntu)" OFF \
   "13" "Sway" OFF \
   "14" "AwesomeWM" OFF \
-  "15" "Openbox" OFF \
   "15" "bspwm" OFF \
   "16" "DWM" OFF \
   "17" "Openbox" OFF \
