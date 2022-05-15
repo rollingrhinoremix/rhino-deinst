@@ -26,6 +26,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "17" "Openbox" OFF \
   "18" "UKUI" OFF \
   "19" "Phosh core" OFF \
+  "20" "Cutefish" OFF \
   "21" "LXDE (Ubuntu)" OFF \
   "22" "LXDE" OFF \
   "23" "XFCE (Ubuntu)" OFF \
@@ -71,7 +72,7 @@ for i in "${SELECTED[@]}"; do
       ;;
     10)
       desktop+=("budgie-desktop")
-      login_manager="gdm3"
+      login_manager="budgie-lightdm-theme-base"
       ;;
     11)
       desktop+=("i3")
@@ -110,6 +111,10 @@ for i in "${SELECTED[@]}"; do
     19)
       desktop+=("phosh-core")
       login_manager="gdm3"
+      ;;
+    20)
+      desktop+=("cutefish-core")
+      login_manager="sddm"
       ;; 
     21)
       desktop+=("lubuntu-desktop")
