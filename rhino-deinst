@@ -142,6 +142,7 @@ for i in "${SELECTED[@]}"; do
     26)
       desktop+=("qtile")
       login_manager="lightdm"
+      ;;
   esac
 done
 
