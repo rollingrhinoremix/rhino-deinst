@@ -7,7 +7,7 @@ if ! command -v dialog > /dev/null; then
 fi
 
 SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow keys to go up/down, press enter to continue" --erase-on-exit --scrollbar --separate-output --checklist "Select Desktop Environment(s)" 10 35 5 \
-  "1" "GNOME (Ubuntu)" ON \
+  "1" "GNOME (Ubuntu)" OFF \
   "2" "GNOME" OFF \
   "3" "KDE (Full)" OFF \
   "4" "KDE (Standard)" OFF \
