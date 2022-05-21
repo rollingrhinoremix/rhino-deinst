@@ -26,13 +26,12 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "17" "Openbox" OFF \
   "18" "UKUI" OFF \
   "19" "Phosh core" OFF \
-  "20" "Cutefish" OFF \
-  "21" "LXDE (Ubuntu)" OFF \
-  "22" "LXDE" OFF \
-  "23" "XFCE (Ubuntu)" OFF \
-  "24" "Enlightenment" OFF \
-  "25" "GNOME Flashback" OFF \
-  "26" "Qtile" OFF \
+  "20" "LXDE (Ubuntu)" OFF \
+  "21" "LXDE" OFF \
+  "22" "XFCE (Ubuntu)" OFF \
+  "23" "Enlightenment" OFF \
+  "24" "GNOME Flashback" OFF \
+  "25" "Qtile" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -114,32 +113,28 @@ for i in "${SELECTED[@]}"; do
     19)
       desktop+=("phosh-core")
       login_manager="gdm3"
-      ;;
-    20)
-      desktop+=("cutefish-core")
-      login_manager="sddm"
       ;; 
-    21)
+    20)
       desktop+=("lubuntu-desktop")
       login_manager="lxdm"
       ;; 
-    22)
+    21)
       desktop+=("lxde")
       login_manager="lxdm"
       ;;
-    23)
+    22)
       desktop+=("xubuntu-desktop")
       login_manager="lightdm"
       ;;
-    24)
+    23)
       desktop+=("enlightenment")
       login_manager="lightdm"
       ;;
-    25)
+    24)
       desktop+=("gnome-session-flashback")
       login_manager="gdm3"
       ;;
-    26)
+    25)
       desktop+=("qtile")
       login_manager="lightdm"
       ;;
