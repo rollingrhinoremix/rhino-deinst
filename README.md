@@ -1,7 +1,6 @@
-# Rhino DEinst
-
-DEinst is a tool that easily installs Desktop Environments.
-
+# rhino-deinst
+rhino-deinst (Rhino DE Installer) is a command-line utility script which provides a Terminal User Interface to install desktop environments on Rolling Rhino Remix + Ubuntu-based systems. 
+ 
 ### Getting started
 Run `rhino-deinst`. Use the up and down keys to navigate the list, press space to select/deselect DEs. Press enter to install them.
 
