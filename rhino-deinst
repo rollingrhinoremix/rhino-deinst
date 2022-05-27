@@ -31,7 +31,6 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "22" "XFCE (Ubuntu)" OFF \
   "23" "Enlightenment" OFF \
   "24" "GNOME Flashback" OFF \
-  "25" "Qtile" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -133,10 +132,6 @@ for i in "${SELECTED[@]}"; do
     24)
       desktop+=("gnome-session-flashback")
       login_manager="gdm3"
-      ;;
-    25)
-      desktop+=("qtile")
-      login_manager="lightdm"
       ;;
   esac
 done
