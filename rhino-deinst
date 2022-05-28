@@ -26,7 +26,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "17" "Openbox" OFF \
   "18" "UKUI" OFF \
   "19" "Phosh core" OFF \
-  "20" "LXDE (Ubuntu)" OFF \
+  "20" "LXQt (Ubuntu)" OFF \
   "21" "LXDE" OFF \
   "22" "XFCE (Ubuntu)" OFF \
   "23" "Enlightenment" OFF \
