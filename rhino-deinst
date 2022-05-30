@@ -80,9 +80,9 @@ for i in "${SELECTED[@]}"; do
       login_manager="lightdm"
       ;;
     12)
-      desktop+=("ubuntu-unity-desktop")
+      desktop+=("unity")
       login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool"
+      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool unity-lens-applications unity-lens-files unity-scopes-runner libzeitgeist-1.0-1 unity-accessibility-profiles vlc pluma mate-system-monitor atril"
       ;;
     13)
       desktop+=("sway")
