@@ -99,6 +99,7 @@ for i in "${SELECTED[@]}"; do
       desktop+=("unity")
       login_manager="lightdm"
       extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool unity-lens-applications unity-lens-files unity-scopes-runner libzeitgeist-1.0-1 unity-accessibility-profiles vlc pluma mate-system-monitor atril eom"
+      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
       ;;
     16)
       desktop+=("cinnamon")
@@ -173,6 +174,8 @@ fi
 
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
+echo "Removing unessecary packages"
+sudo apt remove -y ${remove_packages}
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
