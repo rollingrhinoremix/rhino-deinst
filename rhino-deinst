@@ -174,8 +174,10 @@ fi
 
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
-echo "Removing unessecary packages"
-sudo apt remove -y ${remove_packages}
+if [[ -n $remove_packages ]]; then
+    echo "Removing unnecessary packages"
+    sudo apt remove -y ${remove_packages}
+fi
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
