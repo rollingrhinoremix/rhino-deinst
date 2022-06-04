@@ -141,6 +141,7 @@ for i in "${SELECTED[@]}"; do
       desktop+=("openbox")
       login_manager="lightdm"
       extra_packages="obconf"
+      ;;
     26)
       desktop+=("enlightenment")
       login_manager="lightdm"
