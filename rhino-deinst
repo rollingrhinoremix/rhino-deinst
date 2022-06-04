@@ -33,7 +33,6 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "24" "DWM" OFF \
   "25" "Openbox" OFF \
   "26" "Enlightenment" OFF \
-  
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
