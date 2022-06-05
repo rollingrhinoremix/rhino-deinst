@@ -6,7 +6,7 @@ if ! command -v dialog > /dev/null; then
   sudo apt-get install dialog -y
 fi
 
-SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow keys to go up/down, press enter to continue" --erase-on-exit --scrollbar --separate-output --checklist "Select Desktop Environment(s)" 10 35 5 \
+SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow keys to go up/down, press enter to continue" --scrollbar --separate-output --checklist "Select Desktop Environment(s)" 10 35 5 \
   "1" "GNOME (Ubuntu)" OFF \
   "2" "GNOME Flashback" OFF \
   "3" "GNOME" OFF \
@@ -176,3 +176,4 @@ sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
+clear
