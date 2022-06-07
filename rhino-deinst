@@ -93,6 +93,7 @@ for i in "${SELECTED[@]}"; do
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
       extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool"
+      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
       ;;
     15)
       desktop+=("cinnamon")
@@ -167,6 +168,17 @@ fi
 
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
+if [[ -n $remove_packages ]]; then
+    echo "Removing unnecessary packages"
+    sudo apt remove -y ${remove_packages}
+fi
+if [[ ${desktop[@]} = "ubuntu-unity-desktop" ]]; then
+  echo "Installing Unity 7.6"
+  sudo wget https://repo.unityx.org/unityx.key
+  sudo apt-key add unityx.key
+  echo 'deb https://repo.unityx.org/main testing main' | sudo tee /etc/apt/sources.list.d/unity-x.list
+  sudo apt-get update && sudo apt-get install -y unity
+  fi
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
