@@ -21,18 +21,17 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "12" "Budgie (Ubuntu)" OFF \
   "13" "Budgie" OFF \
   "14" "Unity (Ubuntu)" OFF \
-  "15" "Unity" OFF \
-  "16" "Cinnamon" OFF \
-  "17" "Phosh core" OFF \
-  "18" "UKUI" OFF \
-  "19" "LXDE" OFF \
-  "20" "i3" OFF \
-  "21" "Sway" OFF \
-  "22" "AwesomeWM" OFF \
-  "23" "bspwm" OFF \
-  "24" "DWM" OFF \
-  "25" "Openbox" OFF \
-  "26" "Enlightenment" OFF \
+  "15" "Cinnamon" OFF \
+  "16" "Phosh core" OFF \
+  "17" "UKUI" OFF \
+  "18" "LXDE" OFF \
+  "19" "i3" OFF \
+  "20" "Sway" OFF \
+  "21" "AwesomeWM" OFF \
+  "22" "bspwm" OFF \
+  "23" "DWM" OFF \
+  "24" "Openbox" OFF \
+  "25" "Enlightenment" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -96,53 +95,48 @@ for i in "${SELECTED[@]}"; do
       extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool"
       ;;
     15)
-      desktop+=("unity")
-      login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool unity-lens-applications unity-lens-files unity-scopes-runner libzeitgeist-1.0-1 unity-accessibility-profiles vlc pluma mate-system-monitor atril eom"
-      ;;
-    16)
       desktop+=("cinnamon")
       login_manager="lightdm"
       ;; 
-    17)
+    16)
       desktop+=("phose-core")
       login_manager="gdm3"
       ;;
-    18)
+    17)
       desktop+=("ukui-desktop-environment")
       login_manager="ukui-greeter"
       extra_packages="obconf"
       ;;
-    19)
+    18)
       desktop+=("lxde")
       login_manager="lxdm"
       ;;
-    20)
+    19)
       desktop+=("i3")
       login_manager="lightdm"
       ;; 
-    21)
+    20)
       desktop+=("sway")
       login_manager="sddm"
       ;; 
-    22)
+    21)
       desktop+=("awesome")
       login_manager="lightdm"
       ;;
-    23)
+    22)
       desktop+=("bspwm")
       login_manager="lightdm"
       ;;
-    24)
+    23)
       desktop+=("dwm")
       login_manager="lightdm"
       ;;
-    25)
+    24)
       desktop+=("openbox")
       login_manager="lightdm"
       extra_packages="obconf"
       ;;
-    26)
+    25)
       desktop+=("enlightenment")
       login_manager="lightdm"
       ;;
