@@ -92,7 +92,7 @@ for i in "${SELECTED[@]}"; do
     14)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor"
+      extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor unity-lens-music"
       remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit ubuntu-unity-desktop"
       ;;
     15)
@@ -178,6 +178,7 @@ if [[ ${desktop[@]} = "ubuntu-unity-desktop" ]]; then
 if [[ -n $remove_packages ]]; then
     echo "Removing unnecessary packages"
     sudo apt remove -y ${remove_packages}
+    sudo apt autoremove -y
 fi
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
