@@ -92,8 +92,8 @@ for i in "${SELECTED[@]}"; do
     14)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool"
-      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
+      extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor"
+      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit ubuntu-unity-desktop"
       ;;
     15)
       desktop+=("cinnamon")
@@ -168,10 +168,6 @@ fi
 
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
-if [[ -n $remove_packages ]]; then
-    echo "Removing unnecessary packages"
-    sudo apt remove -y ${remove_packages}
-fi
 if [[ ${desktop[@]} = "ubuntu-unity-desktop" ]]; then
   echo "Installing Unity 7.6"
   sudo wget https://repo.unityx.org/unityx.key
@@ -179,6 +175,10 @@ if [[ ${desktop[@]} = "ubuntu-unity-desktop" ]]; then
   echo 'deb https://repo.unityx.org/main testing main' | sudo tee /etc/apt/sources.list.d/unity-x.list
   sudo apt-get update && sudo apt-get install -y unity
   fi
+if [[ -n $remove_packages ]]; then
+    echo "Removing unnecessary packages"
+    sudo apt remove -y ${remove_packages}
+fi
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
