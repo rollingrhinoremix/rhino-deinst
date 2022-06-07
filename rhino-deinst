@@ -185,6 +185,10 @@ if [[ ${desktop[@]} = "unity" ]]; then
   echo 'deb https://repo.unityx.org/main testing main' | sudo tee /etc/apt/sources.list.d/unity-x.list
   sudo apt-get update && sudo apt-get install -y unity
   fi
+if false [[ ${desktop[@]} = "ubuntu-desktop gnome-session-flashback vanilla-gnome-desktop" ]]; then
+  echo "Removing gnome-shell"
+  sudo apt autoremove '^gnome-shell' --purge -y
+fi
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
