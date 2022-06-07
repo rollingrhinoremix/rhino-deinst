@@ -93,7 +93,7 @@ for i in "${SELECTED[@]}"; do
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
       extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor unity-lens-music"
-      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit ubuntu-unity-desktop"
+      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
       ;;
     15)
       desktop+=("cinnamon")
