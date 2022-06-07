@@ -20,7 +20,7 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "11" "LXQt" OFF \
   "12" "Budgie (Ubuntu)" OFF \
   "13" "Budgie" OFF \
-  "14" "Unity (Ubuntu)" OFF \
+  "14" "Unity" OFF \
   "15" "Cinnamon" OFF \
   "16" "Phosh core" OFF \
   "17" "UKUI" OFF \
@@ -92,7 +92,7 @@ for i in "${SELECTED[@]}"; do
     14)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor unity-lens-music"
+      extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor unity-lens-music unity-lens-photos unity-lens-video"
       remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
       ;;
     15)
