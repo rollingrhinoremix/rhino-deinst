@@ -168,7 +168,7 @@ fi
 
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
-if [[ ${desktop[@]} = "ubuntu-unity-desktop" ]]; then
+if [[ ${desktop[@]} == "ubuntu-unity-desktop" ]]; then
   echo "Installing Unity 7.6"
   sudo wget https://repo.unityx.org/unityx.key
   sudo apt-key add unityx.key
