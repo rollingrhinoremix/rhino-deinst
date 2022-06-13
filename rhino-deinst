@@ -10,28 +10,29 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "1" "GNOME (Ubuntu)" OFF \
   "2" "GNOME Flashback" OFF \
   "3" "GNOME" OFF \
-  "4" "KDE (Full)" OFF \
-  "5" "KDE (Standard)" OFF \
-  "6" "XFCE (Ubuntu)" OFF \
-  "7" "XFCE" OFF \
-  "8" "MATE (Ubuntu)" OFF \
-  "9" "MATE" OFF \
-  "10" "LXQt (Ubuntu)" OFF \
-  "11" "LXQt" OFF \
-  "12" "Budgie (Ubuntu)" OFF \
-  "13" "Budgie" OFF \
-  "14" "Unity" OFF \
-  "15" "Cinnamon" OFF \
-  "16" "Phosh core" OFF \
-  "17" "UKUI" OFF \
-  "18" "LXDE" OFF \
-  "19" "i3" OFF \
-  "20" "Sway" OFF \
-  "21" "AwesomeWM" OFF \
-  "22" "bspwm" OFF \
-  "23" "DWM" OFF \
-  "24" "Openbox" OFF \
-  "25" "Enlightenment" OFF \
+  "4" "KDE (Ubuntu)" OFF \
+  "5" "KDE (Full)" OFF \
+  "6" "KDE (Standard)" OFF \
+  "7" "XFCE (Ubuntu)" OFF \
+  "8" "XFCE" OFF \
+  "9" "MATE (Ubuntu)" OFF \
+  "10" "MATE" OFF \
+  "11" "LXQt (Ubuntu)" OFF \
+  "12" "LXQt" OFF \
+  "13" "Budgie (Ubuntu)" OFF \
+  "14" "Budgie" OFF \
+  "15" "Unity" OFF \
+  "16" "Cinnamon" OFF \
+  "17" "Phosh core" OFF \
+  "18" "UKUI" OFF \
+  "19" "LXDE" OFF \
+  "20" "i3" OFF \
+  "21" "Sway" OFF \
+  "22" "AwesomeWM" OFF \
+  "23" "bspwm" OFF \
+  "24" "DWM" OFF \
+  "25" "Openbox" OFF \
+  "26" "Enlightenment" OFF \
   3>&1 1>&2 2>&3))
 
 for i in "${SELECTED[@]}"; do
@@ -49,95 +50,98 @@ for i in "${SELECTED[@]}"; do
       login_manager="gdm3"
       ;;
     4)
+      desktop+=("kubuntu-desktop")
+      login_manager="sddm"
+      ;;      
+    5)
       desktop+=("kde-full")
       login_manager="sddm"
       ;;
-    5)
+    6)
       desktop+=("kde-standard")
       login_manager="sddm"
       ;;
-    6)
+    7)
       desktop+=("xubuntu-desktop")
       login_manager="lightdm"
       ;;
-    7)
+    8)
       desktop+=("xfce4" "xfce4-goodies")
       login_manager="lightdm"
       ;;
-    8)
+    9)
       desktop+=("ubuntu-mate-desktop")
       login_manager="lightdm"
       ;;
-    9)
+    10)
       desktop+=("mate-desktop")
       login_manager="lightdm"
       ;;
-    10)
+    11)
       desktop+=("lubuntu-desktop")
       login_manager="sddm"
       ;;
-    11)
+    12)
       desktop+=("lxqt")
       login_manager="sddm"
       ;;
-    12)
+    13)
       desktop+=("ubuntu-budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
-      
       ;;
-    13)
+    14)
       desktop+=("budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
       ;; 
-    14)
+    15)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
       extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor unity-lens-music unity-lens-photos unity-lens-video"
       remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
       ;;
-    15)
+    16)
       desktop+=("cinnamon")
       login_manager="lightdm"
       ;; 
-    16)
+    17)
       desktop+=("phose-core")
       login_manager="gdm3"
       ;;
-    17)
+    18)
       desktop+=("ukui-desktop-environment")
       login_manager="ukui-greeter"
       extra_packages="obconf"
       ;;
-    18)
+    19)
       desktop+=("lxde")
       login_manager="lxdm"
       ;;
-    19)
+    20)
       desktop+=("i3")
       login_manager="lightdm"
       ;; 
-    20)
+    21)
       desktop+=("sway")
       login_manager="sddm"
       ;; 
-    21)
+    22)
       desktop+=("awesome")
       login_manager="lightdm"
       ;;
-    22)
+    23)
       desktop+=("bspwm")
       login_manager="lightdm"
       ;;
-    23)
+    24)
       desktop+=("dwm")
       login_manager="lightdm"
       ;;
-    24)
+    25)
       desktop+=("openbox")
       login_manager="lightdm"
       extra_packages="obconf"
       ;;
-    25)
+    26)
       desktop+=("enlightenment")
       login_manager="lightdm"
       ;;
