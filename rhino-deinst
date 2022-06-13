@@ -184,7 +184,7 @@ if [[ -n $remove_packages ]]; then
     sudo apt remove -y ${remove_packages}
     sudo apt autoremove -y
 fi
-if false ! [[ ${desktop[@]} == "ubuntu-desktop gnome-session-flashback vanilla-gnome-desktop" ]]; then
+if ! [[ ${desktop[@]} == "ubuntu-desktop gnome-session-flashback vanilla-gnome-desktop" ]]; then
   echo "Removing gnome-shell"
   sudo apt autoremove '^gnome-shell' --purge -y
 fi
