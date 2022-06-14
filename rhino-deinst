@@ -89,6 +89,7 @@ for i in "${SELECTED[@]}"; do
       desktop+=("ubuntu-budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
       extra_packages="budgie-extras-common budgie-extras-daemon"
+      snap_package_classic="ubuntu-budgie-welcome"
       ;;
     14)
       desktop+=("budgie-desktop")
@@ -181,6 +182,10 @@ if [[ ${desktop[@]} == "ubuntu-unity-desktop" ]]; then
   echo 'deb https://repo.unityx.org/main testing main' | sudo tee /etc/apt/sources.list.d/unity-x.list
   sudo apt-get update && sudo apt-get install -y unity
   fi
+if [[ ${desktop[@]} == "ubuntu-budgie-desktop" ]]; then
+  echo "Installing needed Snaps"
+  sudo snap install ${snap_package_classic} --classic
+fi
 if [[ -n $remove_packages ]]; then
     echo "Removing unnecessary packages"
     sudo apt remove -y ${remove_packages}
