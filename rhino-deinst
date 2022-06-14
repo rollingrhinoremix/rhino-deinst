@@ -88,10 +88,12 @@ for i in "${SELECTED[@]}"; do
     13)
       desktop+=("ubuntu-budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
+      extra_packages="budgie-extras-common budgie-extras-daemon"
       ;;
     14)
       desktop+=("budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
+      extra_packages="budgie-extras-common budgie-extras-daemon"
       ;; 
     15)
       desktop+=("ubuntu-unity-desktop")
