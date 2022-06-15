@@ -10,17 +10,17 @@ SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow ke
   "1" "GNOME (Ubuntu)" OFF \
   "2" "GNOME Flashback" OFF \
   "3" "GNOME" OFF \
-  "4" "KDE (Full)" OFF \
-  "5" "KDE (Standard)" OFF \
-  "6" "XFCE (Ubuntu)" OFF \
-  "7" "XFCE" OFF \
-  "8" "MATE (Ubuntu)" OFF \
-  "9" "MATE" OFF \
-  "10" "LXQt (Ubuntu)" OFF \
-  "11" "LXQt" OFF \
-  "12" "Budgie (Ubuntu)" OFF \
-  "13" "Budgie" OFF \
-  "14" "Unity (Ubuntu)" OFF \
+  "4" "KDE (Ubuntu)" OFF \
+  "5" "KDE (Full)" OFF \
+  "6" "KDE (Standard)" OFF \
+  "7" "XFCE (Ubuntu)" OFF \
+  "8" "XFCE" OFF \
+  "9" "MATE (Ubuntu)" OFF \
+  "10" "MATE" OFF \
+  "11" "LXQt (Ubuntu)" OFF \
+  "12" "LXQt" OFF \
+  "13" "Budgie (Ubuntu)" OFF \
+  "14" "Budgie" OFF \
   "15" "Unity" OFF \
   "16" "Cinnamon" OFF \
   "17" "Phosh core" OFF \
@@ -50,55 +50,57 @@ for i in "${SELECTED[@]}"; do
       login_manager="gdm3"
       ;;
     4)
+      desktop+=("kubuntu-desktop")
+      login_manager="sddm"
+      ;;      
+    5)
       desktop+=("kde-full")
       login_manager="sddm"
       ;;
-    5)
+    6)
       desktop+=("kde-standard")
       login_manager="sddm"
       ;;
-    6)
+    7)
       desktop+=("xubuntu-desktop")
       login_manager="lightdm"
       ;;
-    7)
+    8)
       desktop+=("xfce4" "xfce4-goodies")
       login_manager="lightdm"
       ;;
-    8)
+    9)
       desktop+=("ubuntu-mate-desktop")
       login_manager="lightdm"
       ;;
-    9)
+    10)
       desktop+=("mate-desktop")
       login_manager="lightdm"
       ;;
-    10)
+    11)
       desktop+=("lubuntu-desktop")
       login_manager="sddm"
       ;;
-    11)
+    12)
       desktop+=("lxqt")
       login_manager="sddm"
       ;;
-    12)
+    13)
       desktop+=("ubuntu-budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
-      
+      extra_packages="budgie-extras-common budgie-extras-daemon"
+      snap_package_classic="ubuntu-budgie-welcome"
       ;;
-    13)
+    14)
       desktop+=("budgie-desktop")
       login_manager="budgie-lightdm-theme-base"
+      extra_packages="budgie-extras-common budgie-extras-daemon"
       ;; 
-    14)
+    15)
       desktop+=("ubuntu-unity-desktop")
       login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool"
-      ;;
-    15)
-      desktop+=("unity")
-      login_manager="lightdm"
-      extra_packages="dbus-x11 yaru-theme-unity unity-tweak-tool unity-lens-applications unity-lens-files unity-scopes-runner libzeitgeist-1.0-1 unity-accessibility-profiles vlc pluma mate-system-monitor atril eom"
+      extra_packages="dbus-x11 yaru-theme-unity yaru-theme-icon yaru-theme-gtk yaru-theme-sound unity-tweak-tool atril eom vlc pluma mate-system-monitor unity-lens-music unity-lens-photos unity-lens-video"
+      remove_packages="totem eog nautilus gnome-system-monitor gnome-text-editor gedit"
       ;;
     16)
       desktop+=("cinnamon")
@@ -173,6 +175,26 @@ fi
 
 echo "Installing desktop and login manager..."
 sudo apt-get install -y ${desktop[@]} "${login_manager}" ${extra_packages}
+if [[ ${desktop[@]} == "ubuntu-unity-desktop" ]]; then
+  echo "Installing Unity 7.6"
+  sudo wget https://repo.unityx.org/unityx.key
+  sudo apt-key add unityx.key
+  echo 'deb https://repo.unityx.org/main testing main' | sudo tee /etc/apt/sources.list.d/unity-x.list
+  sudo apt-get update && sudo apt-get install -y unity
+  fi
+if [[ ${desktop[@]} == "ubuntu-budgie-desktop" ]]; then
+  echo "Installing needed Snaps"
+  sudo snap install ${snap_package_classic} --classic
+fi
+if [[ -n $remove_packages ]]; then
+    echo "Removing unnecessary packages"
+    sudo apt remove -y ${remove_packages}
+    sudo apt autoremove -y
+fi
+if ! [[ ${desktop[@]} == "ubuntu-desktop gnome-session-flashback vanilla-gnome-desktop" ]]; then
+  echo "Removing gnome-shell"
+  sudo apt autoremove '^gnome-shell' --purge -y
+fi
 echo "Set login manager to $login_manager"
 sudo dpkg-reconfigure "${login_manager}"
 echo "Done!"
