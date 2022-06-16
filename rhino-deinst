@@ -184,6 +184,7 @@ if [[ ${desktop[@]} == "ubuntu-unity-desktop" ]]; then
   sudo apt-get update && sudo apt-get install -y unity
   fi
 if [[ -n $snap_package_classic ]]; then
+  sudo apt-get install snapd -y
   sudo snap install ${snap_package_classic} --classic
 fi
 if [[ -n $remove_packages ]]; then
