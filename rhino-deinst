@@ -180,7 +180,6 @@ if [[ ${desktop[@]} == "ubuntu-unity-desktop" ]]; then
   sudo apt-key add unityx.key
   echo 'deb https://repo.unityx.org/main testing main' | sudo tee /etc/apt/sources.list.d/unity-x.list
   sudo apt-get update && sudo apt-get install -y unity
-  fi
 fi
 if [[ -n $remove_packages ]]; then
     echo "Removing unnecessary packages"
