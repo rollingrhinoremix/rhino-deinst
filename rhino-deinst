@@ -6,7 +6,11 @@ if ! command -v dialog > /dev/null; then
   sudo apt-get install dialog -y
 fi
 
-SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow keys to go up/down, press enter to continue" --scrollbar --separate-output --checklist "Select Desktop Environment(s)" $(expr $(tput lines) - 5) $(expr $(tput cols) - 5) 5 \
+# Set LINES and COLUMNS variables. (Reference: https://stackoverflow.com/a/48016366)
+shopt -s checkwinsize
+cat /dev/null
+
+SELECTED=($( dialog --backtitle "Press 'space' to toggle an option, use arrow keys to go up/down, press enter to continue" --scrollbar --separate-output --checklist "Select Desktop Environment(s)" $(( ${LINES} - 5 )) $(( ${COLUMNS} - 5)) 5 \
   "1" "GNOME (Ubuntu)" OFF \
   "2" "GNOME Flashback" OFF \
   "3" "GNOME" OFF \
